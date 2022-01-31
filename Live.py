@@ -7,7 +7,7 @@ import MemoryGame
 import CurrencyRouletteGame
 from score import add_score
 from time import sleep
-from gamesUtils import screen_cleaner
+from Utils import screen_cleaner
 game_difficulty = 0
 choose_game = 0
 

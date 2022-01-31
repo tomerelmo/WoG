@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.insert(0, f"{os.getcwd()}/utils/")
 from flask import Flask
-from Utils import BAD_RETURN_CODE, SCORES_FILE_NAME , return_score
+from  gamesUtils import BAD_RETURN_CODE, SCORES_FILE_NAME , return_score
 app = Flask(__name__)
 
 
