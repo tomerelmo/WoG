@@ -22,11 +22,11 @@ def generate_sequence(difficulty):
 def get_list_from_user(difficulty):
     list_from_usr = []
     for num in range(difficulty):
-        user_input = input("[]Enter A number Between 1-101 :")
+        user_input = input("[+]Enter A number Between 1-101 :")
         if user_input.isnumeric() and 1 < int(user_input) < 101:
             list_from_usr.append(int(user_input))
         else:
-            print("Wrong number or invalid input Please start over!")
+            print("[-]Wrong number or invalid input Please start over!")
             break
     if len(list_from_usr) == difficulty:
         return list_from_usr
@@ -36,9 +36,12 @@ def is_list_equal(difficulty):
     return generate_sequence(difficulty) == get_list_from_user(difficulty)
 
 
-
 def play(difficulty):
-    return is_list_equal(difficulty)
+    if str(difficulty).isnumeric():
+        return is_list_equal(difficulty)
+    else:
+        print("[-]Wrong number or invalid input Please start over!")
+        sleep(2)
 
 
 

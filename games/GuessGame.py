@@ -19,6 +19,7 @@ import Live
 # game = Live.load_game()
 # choose_game = Live.choose_game
 # difficulty = Live.game_difficulty
+from time import sleep
 
 
 def generate_number(difficulty):
@@ -32,7 +33,7 @@ def generate_number(difficulty):
 
 
 def get_guess_from_user(difficulty):
-    guessed_number = int(input(f"[]Enter number from 1 to {difficulty} --- >"))
+    guessed_number = int(input(f"[+]Enter number from 1 to {difficulty} --- >"))
     if guessed_number <= difficulty:
         return guessed_number
     else:
@@ -44,8 +45,12 @@ def compare_results(difficulty):
 
 
 def play(difficulty):
-    generate_number(difficulty)
-    return compare_results(difficulty)
+    if str(difficulty).isnumeric():
+        generate_number(difficulty)
+        return compare_results(difficulty)
+    else:
+        print("[-]Wrong number or invalid input Please start over!")
+        sleep(2)
 
 #TEST!
 

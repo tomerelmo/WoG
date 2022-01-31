@@ -13,21 +13,20 @@
 # value to a given amount of USD
 # 3. play - Will call the functions above and play the game. Will return True / False if the user
 # lost or won.
-import requests
-import random
+from time import sleep
+from random import randint
 from currency_converter import CurrencyConverter
 
 
 def get_money_interval(difficultly):
-    convert  = CurrencyConverter()
-    random_usd = random.randint(1, 100)
+    convert = CurrencyConverter()
+    random_usd = randint(1, 100)
     generated_random_usd = convert.convert(random_usd, 'USD', 'ILS')
-    print(generated_random_usd)
     if str(generated_random_usd).split(".")[0].isnumeric():
         print(f"[+]Usd amount IS : {random_usd}")
         num1 = generated_random_usd - (5 - difficultly)
         num2 = generated_random_usd + (5 - difficultly)
-        return [num1 , num2]
+        return [num1, num2]
     else:
         print("[-]Error : Bad API answer please start over, check internet connection and credentials. ")
         pass
@@ -46,11 +45,12 @@ def get_guess_from_user(nums_lst):
         pass
 
 
-def play(difficultly):
-    if get_guess_from_user(get_money_interval(difficultly)):
-        return True
+def play(difficulty):
+    if str(difficulty).isnumeric():
+        return get_guess_from_user(get_money_interval(difficulty))
     else:
-        return False
+        print("[-]Wrong number or invalid input Please start over!")
+        sleep(2)
 
 
 #test!
